@@ -3,3 +3,6 @@ Idag funderade jag på vilka klasser jag ska behöva använda till programmet sa
 
 01/02 - 2021
 Idag arbetade jag med min view där knappar, text och själva rutan skapas. Inget blev färdigställt men variabler finns.
+
+02/02 - 2021
+Databasen är connectad med inloggning. Arbetat med GUI/view men är inte säker på hur jag vill göra den. Kopierade kod från tidigare projekt och tänkte redigera den så den passar soloäventyret. Gjorde klassen "Body" men kanske inte lämpligt namn. 
