@@ -8,10 +8,7 @@ public class View {
 
     public View() {
         createWindow();
-        this.text = new JTextArea();
-        this.choice1 = new JButton();
-        this.choice2 = new JButton();
-        this.restart = new JButton();
+        createButtons();
     }
 
     public void createWindow() {
@@ -22,5 +19,13 @@ public class View {
         viewPanel = new JPanel();
     }
 
+    public void createButtons() {
+
+        this.text = new JTextArea();
+        this.choice1 = new JButton();
+        this.choice2 = new JButton();
+        this.restart = new JButton();
+
+    }
 
 }

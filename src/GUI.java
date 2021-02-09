@@ -14,7 +14,7 @@ public class GUI implements ActionListener {
     public JMenu menuFile, dbMenuFile;
     public JMenuItem newItem, openItem, saveItem, saveAsItem, exitItem, dbNewItem, dbOpenItem;
 
-    MVC file = new MVC(this);
+    Model file = new Model(this);
 
     public static void main(String[] args) {
         new GUI();
@@ -23,16 +23,14 @@ public class GUI implements ActionListener {
     public GUI() {
         createWindow();
         createMenuBar();
-        createDbMenu();
         createFileMenu();
-        create
         window.add(viewPanel);
         window.setVisible(true);
     }
 
     public void createWindow() {
         window = new JFrame("Notepad");
-        window.setSize(800,600);
+        window.setSize(800, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         viewPanel = new JPanel();
@@ -78,59 +76,8 @@ public class GUI implements ActionListener {
         menuFile.add(saveAsItem);
     }
 
-    public void createDbMenu() {
-        dbNewItem = new JMenuItem("Save");
-        dbNewItem.addActionListener(new saveDBListener());
-        dbMenuFile.add(dbNewItem);
-
-        dbOpenItem = new JMenuItem("Open");
-        dbOpenItem.addActionListener(new loadDBListener());
-        dbMenuFile.add(dbOpenItem);
-    }
-
-    public class loadDBListener implements ActionListener {
-        public void actionPerformed(ActionEvent e){
-            try {
-                database db = new database();
-                setLogg(db.getData(Integer.parseInt(JOptionPane.showInputDialog(null, "write the id of the log"))));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    private class saveDBListener implements ActionListener {
-        public void actionPerformed(ActionEvent e){
-            Body body = getLogg();
-            try {
-                database db = new database();
-                db.insertData(body);
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        String command = actionEvent.getActionCommand();
-
-        switch(command) {
-            case "New": file.newFile(); break;
-            case "Open": file.open(); break;
-            case "Save": file.save(); break;
-            case "SaveAs": file.saveAs(); break;
-        }
-    }
-
-    public void setLogg(Body body) {
-        authorArea.setText(body.getCreator());
-
-        textArea.setText(body.getText());
-    }
-
-    public Body getLogg() {
-        return new Body(authorArea.getText(), textArea.getText());
     }
 }
