@@ -7,12 +7,14 @@ import java.sql.SQLException;
 public class GUI implements ActionListener {
     public JFrame window;
     public JTextArea textArea;
-    public JTextField authorArea;
+    public JTextField storyText;
     public JPanel viewPanel;
     public JScrollPane scrollPane;
     public JMenuBar menuBar;
     public JMenu menuFile, dbMenuFile;
     public JMenuItem newItem, openItem, saveItem, saveAsItem, exitItem, dbNewItem, dbOpenItem;
+    public JButton choice1, choice2, restart;
+
 
     Model file = new Model(this);
 
@@ -22,20 +24,30 @@ public class GUI implements ActionListener {
 
     public GUI() {
         createWindow();
+        createTextField();
         createMenuBar();
         createFileMenu();
+        createButtons();
         window.add(viewPanel);
         window.setVisible(true);
     }
 
     public void createWindow() {
-        window = new JFrame("Notepad");
+        window = new JFrame("Soloadventure");
         window.setSize(800, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         viewPanel = new JPanel();
     }
 
+    public void createTextField() {
+
+        // Text for the story here
+        storyText = new JTextField("Story" ,60);
+        this.storyText.setEditable(false);
+        viewPanel.add(storyText);
+
+    }
 
     public void createMenuBar() {
         menuBar = new JMenuBar();
@@ -74,6 +86,13 @@ public class GUI implements ActionListener {
         exitItem.addActionListener(this);
         exitItem.setActionCommand("Exit");
         menuFile.add(saveAsItem);
+    }
+
+    public void createButtons() {
+        // Insert database links here
+        this.choice1 = new JButton();
+        this.choice2 = new JButton();
+        this.restart = new JButton("Restart");
     }
 
     @Override

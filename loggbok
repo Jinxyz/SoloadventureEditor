@@ -11,4 +11,7 @@ Databasen är connectad med inloggning. Arbetat med GUI/view men är inte säker
 Gjorde annat skolarbete
 
 09/02 - 2021
-Satt ett tag med GUI för att förstå hur den ska göras, ska få till knapp och textrutor där saker från databas används. 
+Satt ett tag med GUI för att förstå hur den ska göras, ska få till knapp och textrutor där saker från databas används.
+
+15/02 - 2021
+Arbetat med GUI och försökt stoppa in databasen men det gick inte speciellt bra. Allt som ska vara i GUI borde finnas där, men måste göra så att Model och Controller fungerar men osäker på hur jag gör det. 
