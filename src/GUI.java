@@ -1,22 +1,15 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class GUI implements ActionListener {
     public JFrame window;
-    public JTextArea textArea;
     public JTextField storyText;
     public JPanel viewPanel;
-    public JScrollPane scrollPane;
     public JMenuBar menuBar;
     public JMenu menuFile, dbMenuFile;
     public JMenuItem newItem, openItem, saveItem, saveAsItem, exitItem, dbNewItem, dbOpenItem;
     public JButton choice1, choice2, restart;
-
-
-    Model file = new Model(this);
 
     public static void main(String[] args) {
         new GUI();
@@ -25,9 +18,9 @@ public class GUI implements ActionListener {
     public GUI() {
         createWindow();
         createTextField();
-        createMenuBar();
-        createFileMenu();
         createButtons();
+        // createMenuBar();
+        // createFileMenu();
         window.add(viewPanel);
         window.setVisible(true);
     }
@@ -40,16 +33,25 @@ public class GUI implements ActionListener {
         viewPanel = new JPanel();
     }
 
+    // The story text field
     public void createTextField() {
-
-        // Text for the story here
+        // Insert database story
         storyText = new JTextField("Story" ,60);
-        this.storyText.setEditable(false);
+        storyText.setEditable(false);
         viewPanel.add(storyText);
-
     }
 
-    public void createMenuBar() {
+    public void createButtons() {
+        // Insert database links
+        choice1 = new JButton();
+        choice2 = new JButton();
+        restart = new JButton("Restart");
+    }
+
+    // Not currently used
+    // Menu bar for creating new file, opening or saving file
+
+    /*  public void createMenuBar() {
         menuBar = new JMenuBar();
         window.setJMenuBar(menuBar);
 
@@ -87,14 +89,7 @@ public class GUI implements ActionListener {
         exitItem.setActionCommand("Exit");
         menuFile.add(saveAsItem);
     }
-
-    public void createButtons() {
-        // Insert database links here
-        this.choice1 = new JButton();
-        this.choice2 = new JButton();
-        this.restart = new JButton("Restart");
-    }
-
+*/
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
