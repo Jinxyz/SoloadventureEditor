@@ -18,3 +18,6 @@ Arbetat med GUI och försökt stoppa in databasen men det gick inte speciellt br
 
 16/02 - 2021
 Jag är väldigt osäker på vad jag ska arbeta med och var jag ska arbeta. Kanske att GUI måste ha alla visuella saker men placeholder så att jag kan trycka in sakerna efter det. Jag vet dock inte hur jag bör gå tillväga.
+
+22/02 - 2021
+Magnus pratade om hur man sätter upp MVC och då insåg jag att Story.java egentligen är vad jag vill ha i Model (tror jag) så jag har fixat Model idag. Även ändrat i database.java för att få det att passa med min Model.
