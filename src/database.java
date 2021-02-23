@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class database {
 
-    private Connection conn;
+    private Connection connection;
     private Statement stmt;
 
     database(){
@@ -16,19 +16,18 @@ public class database {
         String text = "";
         String[] choices;
         int[] targetId;
-        int storyId = 1;
 
         try {
 
             try {
-                this.conn = DriverManager.getConnection(
+                this.connection = DriverManager.getConnection(
                         "jdbc:mysql://" + databaseConfig.DBURL + ":" + databaseConfig.port + "/" + databaseConfig.DBname +
                                 "? allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                         databaseConfig.user, databaseConfig.password);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            this.stmt = this.conn.createStatement();
+            this.stmt = this.connection.createStatement();
 
             // Setup statement
             // Create query and execute
@@ -61,34 +60,31 @@ public class database {
             choices = getStringArray(storyDescription);
             targetId = getIntArray(targetLinks);
 
-            model = new Model(text, choices, targetId, storyId);
-
-            // Close conn and stmt
-            this.conn.close();
+            // Close connection and stmt
+            this.connection.close();
             stmt.close();
         } catch(SQLException ex) {
             ex.printStackTrace();
         }
-        return model;
     }
 
     public void saveToDatabase(Model model){
 
-        String text = model.getText();
+        String text = model.getStoryText()4;
         String[] choices = model.getChoices();
         int[] targetId = model.getTargetId();
 
         try {
 
             try {
-                this.conn = DriverManager.getConnection(
+                this.connection = DriverManager.getConnection(
                         "jdbc:mysql://" + databaseConfig.DBURL + ":" + databaseConfig.port + "/" + databaseConfig.DBname +
                                 "? allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                         databaseConfig.user, databaseConfig.password);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            this.stmt = this.conn.createStatement();
+            this.stmt = this.connection.createStatement();
 
             // Setup statement
             // Create query and execute
@@ -116,12 +112,12 @@ public class database {
             }
 
             choices = getStringArray(storyDescription);
-            targetID = getIntArray(storyLinks);
+            targetId = getIntArray(storyLinks);
 
             story = new Story(text, choices, targetId);
 
             // Close conn and stmt
-            this.conn.close();
+            this.connection.close();
             stmt.close();
         } catch(SQLException ex) {
             ex.printStackTrace();

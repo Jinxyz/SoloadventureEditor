@@ -1,29 +1,26 @@
 public class Model {
 
     private String description;
-    private String[] text;
+    private String[] storyText;
     private String[] choices;
     private int storyId;
     private int targetId;
-    private GUI gui;
     private database db;
 
-    public Model(String description, String[] text, String[] choices, int storyId, int targetId, GUI gui, database db) {
+    public Model() {
         this.description = description;
-        this.text = text;
+        this.storyText = storyText;
         this.choices = choices;
         this.storyId = storyId;
         this.targetId = targetId;
-        this.gui = gui;
-        this.db = db;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String[] getText() {
-        return text;
+    public String[] getStoryText() {
+        return storyText;
     }
 
     public String[] getChoices() {
@@ -36,10 +33,6 @@ public class Model {
 
     public int getTargetId() {
         return targetId;
-    }
-
-    public GUI getGui() {
-        return gui;
     }
 
     public database getDb() {
